@@ -1,0 +1,17 @@
+volumes:
+  node_modules:
+
+services:
+  db:
+    image: postgres:15.7
+    container_name: postgres
+    restart: always
+    # platform: 'linux/amd64'
+
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "password"
+    volumes:
+      - "./docker-entrypoint-initdb.d/:/docker-entrypoint-initdb.d/"
